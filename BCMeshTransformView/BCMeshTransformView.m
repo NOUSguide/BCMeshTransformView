@@ -250,6 +250,10 @@
     glEnable(GL_DEPTH_TEST);
 }
 
+- (void)forceRenderTextureToView {
+    [self.texture renderView:self.contentView];
+}
+
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
     GLKMatrix4 viewProjectionMatrix = [self transformMatrix];
