@@ -14,6 +14,8 @@
 
 //to update/render manually (kind of)
 - (void)forceRenderTextureToView;
+//make a snapshot
+- (void)snapshot;
 
 // Animatable. Animation won't fire for incompatible mesh transforms.
 // Animation will always begin from current state, even if UIViewAnimationOptionBeginFromCurrentState

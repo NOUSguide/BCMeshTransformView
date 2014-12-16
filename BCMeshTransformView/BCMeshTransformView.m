@@ -155,10 +155,18 @@
     _meshTransform = [meshTransform copy];
 }
 
+- (void)snapshot {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Image.png"];
+    
+    // Save image.
+    [UIImagePNGRepresentation([_glkView snapshot]) writeToFile:filePath atomically:YES];
+}
+
 - (void)setPresentationMeshTransform:(BCMeshTransform *)presentationMeshTransform
 {
     _presentationMeshTransform = [presentationMeshTransform copy];
-    
+
     [self.buffer fillWithMeshTransform:presentationMeshTransform
                          positionScale:[self positionScaleWithDepthNormalization:self.presentationMeshTransform.depthNormalization]];
     [self.glkView setNeedsDisplay];
